@@ -19,10 +19,10 @@ const ContactForm = () => {
             id="firstName"
             name="firstName"
             placeholder="bill"
-            ref={register({ required: true, maxLength: 3 })}
+            ref={register({ required: true})}
           />
           {errors.firstName && (
-            <p>Looks like there was an error: {errors.firstName.type}</p>
+            <p data-testid="validation">Looks like there was an error: {errors.firstName.type}</p>
           )}
         </div>
 
@@ -53,11 +53,11 @@ const ContactForm = () => {
           <textarea id="message" name="message" ref={register({ required: false })} />
         </div>
         {data && (
-          <pre style={{ textAlign: "left", color: "white" }}>
+          <pre data-testid={data.firstName} style={{ textAlign: "left", color: "white" }}>
             {JSON.stringify(data, null, 2)}
           </pre>
         )}
-        <input type="submit" />
+        <input data-testid="submit-btn" type="submit"/>
       </form>
     </div>
   );
